@@ -20,7 +20,7 @@ function ListUser() {
     } else {
       getUserAuthenticated();
     }
-  }, []);
+  }, [currentUser]);
 
   async function getUserAuthenticated() {
     try {
@@ -96,7 +96,7 @@ function ListUser() {
   return(
     <Container>
       <AreaFilter>
-        <input value={filterUser}  onChange={(e) => setFilterUser(e.target.value)} />
+        <input value={filterUser} placeholder="Insira o usuário do github" onChange={(e) => setFilterUser(e.target.value)} />
         <button type="button" onClick={getUser}>Pesquisar</button>
       </AreaFilter>
       <AreaUser>

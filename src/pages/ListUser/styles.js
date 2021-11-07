@@ -15,6 +15,7 @@ export const AreaFilter = styled.div`
 
   input {
     border-radius: 0.5rem 0 0 0.5rem;
+    padding-left: 1rem;
     width: 39vw;
   }
 
@@ -46,9 +47,10 @@ export const AreaUser = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  height: 40vh;
+  padding-top: 1rem;
   justify-content: flex-start;
   margin: 0 auto;
+  min-height: 50vh;
   width: 50vw;
 
   img {
@@ -96,15 +98,22 @@ export const AreaChoice = styled.div`
 `;
 
 export const AreaStarred = styled.div`
-  background: #d1d1d1;
+  background: transparent;
+  border: 1px solid #000000;
   border-radius: 2rem;
   margin: auto;
   padding: 2rem;
   width: 50vw;
 
   ul {
-    border-bottom: 1px solid #000000;
+    border-bottom: 0.1rem solid gray;
+
+    &:nth-child(odd) {
+      background-color: #d1d1d1;
+    }
+
     li {
+      padding: 0 1rem;
       display: flex;
       line-height: 2rem;
       font-weight: bold;
@@ -118,18 +127,26 @@ export const AreaStarred = styled.div`
 `;
 
 export const AreaRepos = styled.div`
+  background: transparent;
+  border: 1px solid #000000;
+  border-radius: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #d1d1d1;
-  border-radius: 2rem;
   margin: auto;
   padding: 2rem;
   width: 50vw;
 
   ul {
-    border-bottom: 1px solid #000000;
+    border-bottom: 0.1rem solid gray;
+
+
+    &:nth-child(odd) {
+      background-color: #d1d1d1;
+    }
+
     li {
+      padding: 0 1rem;
       display: flex;
       line-height: 2rem;
       font-weight: bold;
