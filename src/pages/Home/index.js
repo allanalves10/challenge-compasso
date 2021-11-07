@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import github from "../../services/Github";
-import { Container } from "./styles";
+import { AreaLogin, Container } from "./styles";
 import { useAuthentication } from '../../contexts/useAuthentication';
 import { useHistory } from "react-router-dom";
+import logoGithub from '../../assets/logo.png';
 
 function Home() {
   const history = useHistory();
+  const [isLoading, setIsLoading] = useState(false);
   const { setUserToken } = useAuthentication();
   const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=${process.env.REACT_APP_CLIENT_ID}`;
 
@@ -17,6 +19,8 @@ function Home() {
       history.push('/home');
     } catch (err) {
       console.log(err);
+      setIsLoading(false);
+
     }
   }
 
@@ -27,6 +31,8 @@ function Home() {
 
     if (hasGithubCode) {
       const [urlWithoutCode, githubCode] = url.split('?code=');
+      
+      setIsLoading(true);
 
       window.history.pushState({}, '', urlWithoutCode);
 
@@ -36,8 +42,17 @@ function Home() {
 
   return(
     <Container>
-      <a href={signInUrl}>Login Com o Github</a>
-      <h1>...</h1>
+      <AreaLogin>
+        <img src={logoGithub} alt="Logo GitHub"/>
+
+        {!isLoading && 
+          <a href={signInUrl}>Login Com o Github</a>
+        }
+
+        {isLoading && 
+          <p>Carregando...</p>
+        }        
+      </AreaLogin>
     </Container>
   )
 }
